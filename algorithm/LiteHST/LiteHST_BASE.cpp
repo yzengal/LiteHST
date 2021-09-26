@@ -319,18 +319,12 @@ void constructHST(string& filename) {
 		vtmp.push_back(pi[j]);
 	preC.push_back(vtmp);
 	
-	cout << "beta: " << beta << endl;
-	cout << "pi:";
-	for (int i=0; i<nV; ++i)
-		cout << pi[i] << " ";
-	cout << endl;	
-	
 	vector<pair<int,double> > DISTs(nV, make_pair(-1,0.0));
 	DISTs[pi[0]].first = pi[0];
 	
 	distortion = 1.0;
 	for (int lev=2; lev<=H+1; ++lev) {
-		printf("lev = %d\n", lev);
+		// printf("lev = %d\n", lev);
 		fflush(stdout);
 		radius /= alpha;
 		memset(visit, false, sizeof(bool)*nV);

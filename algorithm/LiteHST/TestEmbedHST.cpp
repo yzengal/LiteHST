@@ -17,7 +17,6 @@ void TestRange() {
 		double tim = 0, sumCnt = 0;
 		
 		for (int j = 0; j < QRY.size(); ++ j) {
-			QRY[j] %= nV;
 			answers.clear();
 			distCnt = 0;
 			
@@ -42,7 +41,6 @@ void TestKnn() {
 		double tim = 0, sumCnt = 0;
 		
 		for (int j = 0; j < QRY.size(); ++ j) {
-			QRY[j] %= nV;
 			answers.clear();
 			distCnt = 0;
 			

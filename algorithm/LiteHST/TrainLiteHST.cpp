@@ -20,8 +20,7 @@ void TestKnnPredict() {
 		for (int j = 0; j < QRY.size(); ++ j) {
 			answers.clear();
 			
-			// scanf("%d", &HSTlite._queryLocPos);
-			HSTlite._queryLocPos = HSTlite.Leaves[QRY[j]].lhs;
+			scanf("%d", &HSTlite._queryLocPos);
 			distCnt = 0;
 			t0 = clock();
 			HSTlite._DSU_KnnQuery_v0f(V[QRY[j]], KTH[i], answers); // learning

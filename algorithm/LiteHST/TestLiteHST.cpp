@@ -17,21 +17,15 @@ void TestRange() {
 		double tim = 0, sumCnt = 0;
 		
 		for (int j = 0; j < QRY.size(); ++ j) {
-			QRY[j] %= nV;
 			answers.clear();
 			distCnt = 0;
 			
 			t0 = clock();
-			HSTlite._queryLocPos = HSTlite.Leaves[QRY[j]].lhs;
 			HSTlite._DSU_RangeQuery_v1f(V[QRY[j]], RAN[i], answers);	// non-learning
 			t1 = clock();
 			
 			tim += 1. * (t1 - t0) / CLOCKS_PER_SEC;
 			sumCnt += distCnt;
-			
-			for (int k=0; k<answers.size(); ++k)
-				cout << answers[k] << " ";
-			cout << endl;
 		}
 		
 		printf("%.6lf %.6lf\n", 1. * sumCnt / QRY.size(), tim / QRY.size());
@@ -47,12 +41,10 @@ void TestKnn() {
 		double tim = 0, sumCnt = 0;
 		
 		for (int j = 0; j < QRY.size(); ++ j) {
-			QRY[j] %= nV;
 			answers.clear();
 			distCnt = 0;
 			
 			t0 = clock();
-			HSTlite._queryLocPos = HSTlite.Leaves[QRY[j]].lhs;
 			HSTlite._DSU_KnnQuery_v0g(V[QRY[j]], KTH[i], answers); // non-learning
 			t1 = clock();
 			
@@ -80,16 +72,6 @@ void test() {
 	constructHST(srcFileName);
 	t1 = clock();
 	timeOfHSTp = 1. * (t1 - t0) / CLOCKS_PER_SEC;
-	
-	for (int i=0; i<0; ++i) {
-		cout << "i: " << i << endl;
-		constructHST(srcFileName);
-		dumpTree(rt);
-		HST_Lite_t tmp;
-		tmp.init(H, nV, distortion);
-		tmp.compressHST(rt);
-		tmp.dumpTree();
-	}
 	
 	nidOfHSTp = countTree(rt);
 	memOfHSTp = memoryTree(rt);

@@ -1,7 +1,7 @@
 
 CC = gcc
 CXX = g++
-LIBS = 
+LIBS =  
 CFLAGS = --std=c++11 -W -Wall -Wno-sign-compare -O3 -s -pipe -mmmx -msse -msse2 -msse3 # -mcmodel=medium
 MEM = -D WATCH_MEM
 DIM = 
@@ -13,6 +13,9 @@ monitor.o: monitor.h monitor.cpp
 global.o: global.h global.cpp 
 	$(CXX) $(CFLAGS) -c global.cpp $(LIBS) $(MEM) $(DIM)
 
+LiteHST_BASE.o: LiteHST_BASE.h LiteHST_BASE.cpp global.h global.cpp global.o monitor.h monitor.cpp monitor.o
+	$(CXX) $(CFLAGS) -c global.o monitor.o LiteHST_BASE.cpp $(LIBS) $(MEM) $(DIM)	
+	
 LiteHST_DSU_Query.o: LiteHST_DSU_Query.h LiteHST_DSU_Query.cpp global.h global.cpp global.o LiteHST_BASE.h LiteHST_BASE.cpp LiteHST_BASE.o monitor.h monitor.cpp monitor.o 
 	$(CXX) $(CFLAGS) -c global.o monitor.o LiteHST_BASE.o LiteHST_DSU_Query.cpp $(LIBS) $(MEM) $(DIM)
 		
